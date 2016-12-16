@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JS Drum Kit</title>
+    <style>
+        .wrapper {
+            width: 1024px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            clear: both;
+        }
+        .drumSet {
+            float: left;
+            position: absolute;
+            top: 40%;
+        }
+        .key {
+            width: 80px;
+            height: 80px;
+            border: 3px solid black;
+            float: left;
+            margin: 0 13px;
+        }
+        .sound {
+            width: 90px;
+            height: 90px;
+            border: 3px solid yellow;
+            float: left;
+            margin: 0 3px;
+        }
+        h1, h2 {
+            font-family: Arial;
+            text-transform: capitalize;
+        }
+        h1 {
+            text-align: center;
+            position: relative;
+            top: -21%;
+            font-size: 2em;
+        }
+        h2 {
+            text-align: center;
+            position: relative;
+            top: -45%;
+            font-size: 1em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="drumSet">
+            <div data-key="65" class="key"><h1>a</h1><h2>clap</h2></div>
+            <div data-key="83" class="key"><h1>s</h1><h2>hihat</h2></div>
+            <div data-key="68" class="key"><h1>d</h1><h2>kick</h2></div>
+            <div data-key="70" class="key"><h1>f</h1><h2>openhihat</h2></div>
+            <div data-key="71" class="key"><h1>g</h1><h2>boom</h2></div>
+            <div data-key="72" class="key"><h1>h</h1><h2>ride</h2></div>
+            <div data-key="74" class="key"><h1>j</h1><h2>snare</h2></div>
+            <div data-key="75" class="key"><h1>k</h1><h2>tom</h2></div>
+            <div data-key="76" class="key"><h1>l</h1><h2>tink</h2></div>
+        </div>
+    </div>
+</body>
+</html>
