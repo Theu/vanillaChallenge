@@ -26,6 +26,7 @@
         .sound {
             width: 90px;
             height: 90px;
+            trasition: all 0.7;
             border: 3px solid #e2be09;
             float: left;
             margin: 0 3px;
@@ -79,9 +80,14 @@
         window.addEventListener('keydown', function(e){
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
             if(!audio) return;
+            audio.currentTime = 0,
             audio.play();
-            const suono = document.querySelector(`div[data-key="${e.keyCode}"]`);
-            suono.className += ' sound';
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            key.className += ' sound';
+        });
+        window.addEventListener('keyup', function(e){
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            key.className += 'key';
         });
             // var keyCode = e.keyCode;
             // switch(keyCode) {
