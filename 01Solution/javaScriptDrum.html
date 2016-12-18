@@ -20,13 +20,13 @@
             width: 80px;
             height: 80px;
             border: 3px solid black;
+            transition: all 0.07s;
             float: left;
             margin: 0 13px;
         }
         .sound {
-            width: 90px;
-            height: 90px;
-            border: 3px solid #e2be09;
+            transform: scale(1.1);
+            border-color: #e2be09;
             float: left;
             margin: 0 3px;
         }
@@ -76,62 +76,21 @@
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
     <script>
-        window.addEventListener('keydown', function(e){
+         function playSound(e){
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
             if(!audio) return;
+            audio.currentTime = 0,
             audio.play();
-            const suono = document.querySelector(`div[data-key="${e.keyCode}"]`);
-            suono.className += ' sound';
-        });
-            // var keyCode = e.keyCode;
-            // switch(keyCode) {
-            //     case (65):
-            //         console.log(e.key);
-            //
-            //         break;
-            //     case (83):
-            //         console.log(e.key);
-            //         break;
-            //     case (68):
-            //         console.log(e.key);
-            //         break;
-            //     case (70):
-            //         console.log(e.key);
-            //         break;
-            //     case (71):
-            //         console.log(e.key);
-            //         break;
-            //     case (72):
-            //         console.log(e.key);
-            //         break;
-            //     case (74):
-            //         console.log(e.key);
-            //         break;
-            //     case (75):
-            //         console.log(e.key);
-            //         break;
-            //     case (76):
-            //         console.log(e.key);
-            //         break;
-            // }
-        // document.getElementById('drumSet').addEventListener("onkeypress", logKeyPressed, false);
-        // // window.onkeydown = logKeyPressed;
-        // function logKeyPressed(e) {
-        //     var keyCode = e.target.value;
-        //         alert('esisto')
-        //         console.log(keyCode);
-        //
-        //     //
-        //     // switch(keyCode) {
-        //     //     case (keyCode == 65):
-        //     //         console.log('you pressed a');
-        //     //         break;
-        //     //     case (keyCode == 83):
-        //     //         console.log('you pressed s');
-        //     //         break;
-        //     // }
-        // }
-
+            key.classList.add('sound');
+        };
+        function removeTransition(e) {
+            if(e.propertyName !== 'transform') return;
+            this.classList.remove('sound');
+        }
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound)
     </script>
 </body>
 </html>
