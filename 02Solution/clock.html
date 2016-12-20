@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <style>
+    .clock-face {
+        width: 400px;
+        height: 400px;
+        margin-right: auto;
+        margin-left: auto;
+        clear: both;
+        border:10px solid black;
+        border-radius: 50%;
+        position: relative;
+        top: 50%;
+        padding: 5px;
+    }
+    .hand {
+        width: 50%;
+        height: 6px;
+        background-color: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: all 0.05s;
+        transition-timing-function:cubic-bezier(0.29, 2.7, 0.57, 1);
+    }
+  </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand sec-hand"></div>
+        </div>
+    </div>
+    <script>
+        const secondHand = document.querySelector('.sec-hand');
+        function setDate() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const secondsDegree = ((seconds / 60) * 360);
+            secondHand.style.transform = `rotate(${secondsDegree}deg)`;
+            console.log(secondsDegree);
+        }
+        setInterval(setDate, 1000)
+    </script>
+</body>
+</html>
